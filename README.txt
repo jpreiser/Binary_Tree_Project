@@ -9,6 +9,6 @@ To run, type './main <input file>' into the command line.
 
 To clean the directory, type 'make clean' into the command line.
 
-Currently this prgram only runs with int-input1.txt, float-input.txt, 
-and string-input.txt. To modify the lists, either change these files 
-directly or manipulate them within the program. 
+Currently this prgram only runs with int-input1.txt, float-input1.txt,
+and string-input1.txt. To modify the lists, either edit these files
+directly or manipulate them within the program.
