@@ -167,20 +167,26 @@ int BinaryTree<T>::getNumLeafNodes(NodeType<T>* n) {
 /* Returns the sum of the subtrees of a given node */
 template<class T>
 void BinaryTree<T>::getSumOfSubtrees(NodeType<T>* n, T key) {
-    T total;
-    if (n == NULL) {
-        std::cout << "Item not in tree." << std::endl;
-        return;
+    try {
+        T total;
+        if (n == NULL) {
+            std::cout << "Item not in tree." << std::endl;
+            return;
+        }
+        if (n->key == key) {
+            total = getVal(n->left) + getVal(n->right);
+            std::cout << "Sum of Subtrees: " << total << std::endl; 
+            return;
+        } else if (key < n->key) {
+            getSumOfSubtrees(n->left, key);
+        } else if (key > n->key) {
+            getSumOfSubtrees(n->right, key);
+        }
     }
-    if (n->key == key) {
-        total = getVal(n->left) + getVal(n->right);
-        std::cout << "Sum of Subtrees: " << total << std::endl; 
-        return;
-    } else if (key < n->key) {
-        getSumOfSubtrees(n->left, key);
-    } else if (key > n->key) {
-        getSumOfSubtrees(n->right, key);
+    catch (std::logic_error&) {
+        std::cout << "Can't sum strings." << std::endl;
     }
+
 }
 
 template<class T>
