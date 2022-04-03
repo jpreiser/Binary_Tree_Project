@@ -57,6 +57,7 @@ BinaryTree<float> createFloatTree(std::string fileName) {
 	}
 
 	for(long unsigned int i = 0; i < vals.size(); i++) {
+        std::cout<<"inserting"<<std::endl;
         num = vals.at(i);
 		created.insert(num);
 	}
@@ -121,15 +122,22 @@ void intTree(BinaryTree<int> tree) {
         case 'l': // length *done*
             std::cout << "Tree Length: ";
             tree.BinaryTree<int>::getLength(tree.root);
+            std::cout << std::endl;
             break;
         case 'n': // in order *done*
+            std::cout << "In-Order: ";
             tree.BinaryTree<int>::inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'p': // pre-order *done*
+            std::cout << "Pre-Order: ";
             tree.BinaryTree<int>::preOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'o': // post-order *done*
+            std::cout << "Post-Order";
             tree.BinaryTree<int>::postOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
             tree.BinaryTree<int>::getNumSingleParent();
@@ -138,7 +146,7 @@ void intTree(BinaryTree<int> tree) {
             tree.BinaryTree<int>::getNumLeafNodes();
             break;
         case 't': // getSumOfSubtrees *done*
-            std::cout << "Item to get sum of subrees: ";
+            std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
             tree.BinaryTree::getSumOfSubtrees(key);
             break;
@@ -189,13 +197,19 @@ void floatTree(BinaryTree<float> tree) {
             std::cout << tree.BinaryTree<float>::getLength(tree.root) << std::endl;
             break;
         case 'n': // in order *done*
+            std::cout << "In-order: ";
             tree.BinaryTree<float>::inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'p': // pre-order *done*
+            std::cout << "Pre-Order";
             tree.BinaryTree<float>::preOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'o': // post-order *done*
+            std::cout << "Post-order";
             tree.BinaryTree<float>::postOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
             tree.BinaryTree<float>::getNumSingleParent();
@@ -204,7 +218,7 @@ void floatTree(BinaryTree<float> tree) {
             tree.BinaryTree<float>::getNumLeafNodes();
             break;
         case 't': // getSumOfSubtrees *done*
-            std::cout << "Item to get sum of subrees: ";
+            std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
             tree.BinaryTree::getSumOfSubtrees(key);
             break;
@@ -254,13 +268,19 @@ void stringTree(BinaryTree<std::string> tree) {
             std::cout << tree.BinaryTree<std::string>::getLength(tree.root) << std::endl;
             break;
         case 'n': // in order *done*
+            std::cout << "In-order: ";
             tree.BinaryTree<std::string>::inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'p': // pre-order *done*
+            std::cout << "Pre-order: ";
             tree.BinaryTree<std::string>::preOrder(tree.root);
+            std::cout << std::endl;
             break;
-        case 'o': // post-order *done*
+        case 'o': // post-order *done*/
+            std::cout << "Post-order: ";
             tree.BinaryTree<std::string>::postOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
             tree.BinaryTree<std::string>::getNumSingleParent();
@@ -269,7 +289,7 @@ void stringTree(BinaryTree<std::string> tree) {
             tree.BinaryTree<std::string>::getNumLeafNodes();
             break;
         case 't': // getSumOfSubtrees *done*
-            std::cout << "Item to get sum of subrees: ";
+            std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
             tree.BinaryTree::getSumOfSubtrees(key);
             break;
@@ -287,7 +307,6 @@ void stringTree(BinaryTree<std::string> tree) {
 
 int main (int argc, char *argv[]) {
 
-    
     BinaryTree<int> iTree = BinaryTree<int>();
     BinaryTree<float> fTree = BinaryTree<float>();
     BinaryTree<std::string> sTree = BinaryTree<std::string>();

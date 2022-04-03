@@ -9,6 +9,7 @@ struct NodeType {
     T key;
     NodeType<T>* left;
     NodeType<T>* right;
+
 }; // node
 
 template<class T>
@@ -26,8 +27,8 @@ public:
     /* Inserts a node into the tree. */
     void insert(T key);
 
-    ///* Recursive function for putting new nodes into a tree. */
-    NodeType<T>* insert(NodeType<T>* node, T key);
+    /* Insert Overload for recursive calls. */
+    NodeType<T>* insert(NodeType<T> *node, T key);
 
     /* Deletes an item from the tree and restructures the tree as needed. */
     void deleteItem(T key);

@@ -17,22 +17,23 @@ BinaryTree<T>::~BinaryTree() {
 /* Inserts a node into the tree. */
 template<class T>
 void BinaryTree<T>::insert(T key) {
-    insert(root, key);
+    root = insert(root, key);
 }
 
 /* Recursive Function for putting items into a tree. */
 template<class T>
-NodeType<T>* BinaryTree<T>::insert(NodeType<T>* node, T key) {
-    if (node == NULL) {
-        node = new NodeType<T>;
-        node->right = NULL;
-        node->left = NULL;
-        node->key = key;
-    } else if (key < node->key) {
-        node->left = insert(node->left, key);
-    } else {
-        node->right = insert(node->right, key);
+NodeType<T>* BinaryTree<T>::insert(NodeType<T>* n, T key) {
+    if (n == NULL) {
+        n = new NodeType<T>;
+        n->key = key;
+        n->left = n->right = NULL;
+    }   
+    else if (key < n->key) {
+        n->left = insert(n->left, key);
+    } else if (key > n->key) {
+        n->right = insert(n->right, key);
     }
+    return n;
 }
 
 /* Deletes an item from the tree and restructures the tree as needed. */
@@ -51,36 +52,30 @@ void BinaryTree<T>::retrieve(T item, bool found) const {
 template<class T>
 void BinaryTree<T>::preOrder(NodeType<T>* node) const {
     if (node != nullptr) {
-        std::cout << "Pre-Order: ";
-        std::cout << node->key;
+        std::cout << node->key << " ";
         preOrder(node->left);
         preOrder(node->right);
     }
-    std::cout << "" << std::endl;
 }
 
 /* Prints the values of the tree in order. */
 template<class T>
 void BinaryTree<T>::inOrder(NodeType<T>* node) const{
     if (node != nullptr) {
-        std::cout << "In-Order: ";
         inOrder(node->left);
         std::cout << node->key << " ";
         inOrder(node->right);
     }
-    std::cout << std::endl; 
 }
 
 /* Prints the post-order of the tree. */
 template<class T>
 void BinaryTree<T>::postOrder(NodeType<T>* node) const {
     if (node != nullptr) {
-        std::cout << "Post-Order";
         postOrder(node->left);
         postOrder(node->right);
         std::cout << node->key << " ";
     }
-    std::cout << "" << std::endl;
 }
 
 /* Returns the number of nodes in the tree. */
@@ -96,19 +91,19 @@ int BinaryTree<T>::getLength(NodeType<T>* node) const {
 /* Returns the number of nodes with only a single child. */
 template<class T>
 int BinaryTree<T>::getNumSingleParent() {
-
+    return 0; 
 }
 
 /* Returns the number of leaf nodes within the tree. */
 template<class T>
 int BinaryTree<T>::getNumLeafNodes() {
-
+    return 0; 
 }
 
 /* Returns the sum of the subtrees of a given node */
 template<class T>
 void BinaryTree<T>::getSumOfSubtrees(T key) {
-
+    std::cout << "0" << std::endl;
 }
 
 template class BinaryTree<int>;
