@@ -24,6 +24,9 @@ public:
     /* Destructor for the binary tree. */
     ~BinaryTree();
 
+    /* Recursive function for deleting a tree. */
+    NodeType<T>* makeEmpty(NodeType<T>* n);
+
     /* Inserts a node into the tree. */
     void insert(T key);
 
@@ -33,8 +36,14 @@ public:
     /* Deletes an item from the tree and restructures the tree as needed. */
     void deleteItem(T key);
 
+    /* Recursive overload to delete an item from the tree. */
+    NodeType<T>* deleteItem(T key, NodeType<T>* n);
+
     /* If an item exists in the tree, return it and set found to true if successful. */
-    void retrieve(T item, bool found) const;
+    void retrieve(T key, bool found);
+
+    /* Recursive call for finding if a node exists in the tree. */
+    bool retrieve(NodeType<T>* n, T key);
 
     /* Prints the preorder of the tree. */
     void preOrder(NodeType<T>* node) const;
@@ -49,14 +58,22 @@ public:
     int getLength(NodeType<T>* node) const;
 
     /* Returns the number of nodes with only a single child. */
-    int getNumSingleParent();
+    int getNumSingleParent(NodeType<T>* n);
 
     /* Returns the number of leaf nodes within the tree. */
-    int getNumLeafNodes();
+    int getNumLeafNodes(NodeType<T>* n);
 
     /* Returns the sum of the subtrees of a given node */
-    void getSumOfSubtrees(T key);
+    void getSumOfSubtrees(NodeType<T>* n, T key);
+    
+    /* Recursive call used by sum of subtrees once subtree root is found. */
+    T getVal(NodeType<T>* n);
 
+    /* Recursive function to find the max value in a tree or subtree. */
+    NodeType<T>* findMax(NodeType<T>* node);
+
+    /* Recursive function to find teh min value in a tree or subtree. */
+    NodeType<T>* findMin(NodeType<T>* node);
 };
 
 #endif
