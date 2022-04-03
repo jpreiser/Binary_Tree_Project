@@ -14,6 +14,9 @@ struct NodeType {
 template<class T>
 class BinaryTree {
 public:
+    /* The root of the tree */  
+    NodeType<T>* root;
+
     /* Constructur of the binary tree. */
     BinaryTree();
 
@@ -21,25 +24,28 @@ public:
     ~BinaryTree();
 
     /* Inserts a node into the tree. */
-    void insert(T &key);
+    void insert(T key);
+
+    ///* Recursive function for putting new nodes into a tree. */
+    NodeType<T>* insert(NodeType<T>* node, T key);
 
     /* Deletes an item from the tree and restructures the tree as needed. */
-    void deleteItem(T &key);
+    void deleteItem(T key);
 
     /* If an item exists in the tree, return it and set found to true if successful. */
-    void retrieve(T &item, bool &found) const;
+    void retrieve(T item, bool found) const;
 
     /* Prints the preorder of the tree. */
-    void preOrder() const;
+    void preOrder(NodeType<T>* node) const;
 
     /* Prints the values of the tree in order. */
-    void inOrder() const;
+    void inOrder(NodeType<T>* node) const;
 
     /* Prints the post-order of the tree. */
-    void postOrder() const;
+    void postOrder(NodeType<T>* node) const;
 
     /* Returns the number of nodes in the tree. */
-    int getLength() const;
+    int getLength(NodeType<T>* node) const;
 
     /* Returns the number of nodes with only a single child. */
     int getNumSingleParent();
@@ -48,10 +54,8 @@ public:
     int getNumLeafNodes();
 
     /* Returns the sum of the subtrees of a given node */
-    void getSumOfSubtrees();
+    void getSumOfSubtrees(T key);
 
-    /* The root of the tree */  
-    NodeType *root;
 };
 
 #endif
