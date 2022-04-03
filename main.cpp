@@ -13,6 +13,7 @@ void printGreeting() {
 }
 
 void printOptions() {
+    std::cout << "Commands:" << std::endl;
     std::cout << "insert (i), delete (d), retrieve (r), length (l), in-order (n)," << std::endl;
     std::cout << "pre-order (p), post-order(o), getNumSingleParent (s)," << std::endl;
     std::cout << "getNumLeafNodes (f), getSumOfSubtrees (t), quit (q)" << std::endl;
@@ -57,7 +58,6 @@ BinaryTree<float> createFloatTree(std::string fileName) {
 	}
 
 	for(long unsigned int i = 0; i < vals.size(); i++) {
-        std::cout<<"inserting"<<std::endl;
         num = vals.at(i);
 		created.insert(num);
 	}
@@ -104,13 +104,17 @@ void intTree(BinaryTree<int> tree) {
             std::cout << "Item to insert: ";
             std::cin >> key;
             tree.BinaryTree<int>::insert(key);
+            std::cout << "In-Order: ";
             tree.BinaryTree<int>::inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'd': // delete *done*
             std::cout << "Item to delete: ";
             std::cin >> key;
             tree.BinaryTree<int>::deleteItem(key);
+            std::cout << "In-Order: ";
             tree.inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'r': {// retrieve *done*
             bool found = false;
@@ -121,8 +125,7 @@ void intTree(BinaryTree<int> tree) {
         }
         case 'l': // length *done*
             std::cout << "Tree Length: ";
-            tree.BinaryTree<int>::getLength(tree.root);
-            std::cout << std::endl;
+            std::cout << tree.BinaryTree<int>::getLength(tree.root) << std::endl;
             break;
         case 'n': // in order *done*
             std::cout << "In-Order: ";
@@ -135,26 +138,30 @@ void intTree(BinaryTree<int> tree) {
             std::cout << std::endl;
             break;
         case 'o': // post-order *done*
-            std::cout << "Post-Order";
+            std::cout << "Post-Order: ";
             tree.BinaryTree<int>::postOrder(tree.root);
             std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
-            tree.BinaryTree<int>::getNumSingleParent();
+            std::cout << "Number of Single Parents: ";
+            std:: cout << tree.BinaryTree<int>::getNumSingleParent(tree.root);
+            std::cout << std::endl;
             break;
         case 'f': // getNumLeafNodes *done*
-            tree.BinaryTree<int>::getNumLeafNodes();
+            std::cout << "Number of leaf nodes: ";
+            std::cout << tree.BinaryTree<int>::getNumLeafNodes(tree.root);
+            std::cout << std::endl;
             break;
         case 't': // getSumOfSubtrees *done*
             std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
-            tree.BinaryTree::getSumOfSubtrees(key);
+            tree.BinaryTree::getSumOfSubtrees(tree.root, key);
             break;
         case 'q': // quit *done*
             std::cout << "Quitting program..." << std::endl;
             return;
         default:
-            std::cout << "Invalid command, try again!" << std::endl;
+            std::cout << "Command not recognized. Try again" << std::endl;
             break;    
         }
     }
@@ -162,7 +169,6 @@ void intTree(BinaryTree<int> tree) {
 } // intTree option
 
 void floatTree(BinaryTree<float> tree) {
-
     float key;
     char operation;
 
@@ -176,6 +182,7 @@ void floatTree(BinaryTree<float> tree) {
             std::cout << "Item to insert: ";
             std::cin >> key;
             tree.BinaryTree<float>::insert(key);
+            std::cout << "In-Order: ";
             tree.BinaryTree<float>::inOrder(tree.root);
             std::cout << std::endl;
             break;
@@ -184,6 +191,7 @@ void floatTree(BinaryTree<float> tree) {
             std::cin >> key;
             tree.BinaryTree<float>::deleteItem(key);
             tree.inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'r': {// retrieve *done*
             bool found = false;
@@ -197,36 +205,40 @@ void floatTree(BinaryTree<float> tree) {
             std::cout << tree.BinaryTree<float>::getLength(tree.root) << std::endl;
             break;
         case 'n': // in order *done*
-            std::cout << "In-order: ";
+            std::cout << "In-Order: ";
             tree.BinaryTree<float>::inOrder(tree.root);
             std::cout << std::endl;
             break;
         case 'p': // pre-order *done*
-            std::cout << "Pre-Order";
+            std::cout << "Pre-Order: ";
             tree.BinaryTree<float>::preOrder(tree.root);
             std::cout << std::endl;
             break;
         case 'o': // post-order *done*
-            std::cout << "Post-order";
+            std::cout << "Post-Order: ";
             tree.BinaryTree<float>::postOrder(tree.root);
             std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
-            tree.BinaryTree<float>::getNumSingleParent();
+            std::cout << "Number of Single Parents: ";
+            std:: cout << tree.BinaryTree<float>::getNumSingleParent(tree.root);
+            std::cout << std::endl;
             break;
         case 'f': // getNumLeafNodes *done*
-            tree.BinaryTree<float>::getNumLeafNodes();
+            std::cout << "Number of leaf nodes: ";
+            std::cout << tree.BinaryTree<float>::getNumLeafNodes(tree.root);
+            std::cout << std::endl;
             break;
         case 't': // getSumOfSubtrees *done*
             std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
-            tree.BinaryTree::getSumOfSubtrees(key);
+            tree.BinaryTree::getSumOfSubtrees(tree.root, key);
             break;
         case 'q': // quit *done*
             std::cout << "Quitting program..." << std::endl;
             return;
         default:
-            std::cout << "Invalid command, try again!" << std::endl;
+            std::cout << "Command not recognized. Try again" << std::endl;
             break;    
         }
     }
@@ -248,15 +260,19 @@ void stringTree(BinaryTree<std::string> tree) {
             std::cout << "Item to insert: ";
             std::cin >> key;
             tree.BinaryTree<std::string>::insert(key);
+            std::cout << "In-Order: ";
             tree.BinaryTree<std::string>::inOrder(tree.root);
+            std::cout << std::endl;
             break;
         case 'd': // delete *done*
             std::cout << "Item to delete: ";
             std::cin >> key;
             tree.BinaryTree<std::string>::deleteItem(key);
+            std::cout << "In-Order: ";
             tree.inOrder(tree.root);
+            std::cout << std::endl;
             break;
-        case 'r': { // retrieve *done*
+        case 'r': {// retrieve *done*
             bool found = false;
             std::cout << "Item to be retrieved: ";
             std::cin >> key;
@@ -268,36 +284,40 @@ void stringTree(BinaryTree<std::string> tree) {
             std::cout << tree.BinaryTree<std::string>::getLength(tree.root) << std::endl;
             break;
         case 'n': // in order *done*
-            std::cout << "In-order: ";
+            std::cout << "In-Order: ";
             tree.BinaryTree<std::string>::inOrder(tree.root);
             std::cout << std::endl;
             break;
         case 'p': // pre-order *done*
-            std::cout << "Pre-order: ";
+            std::cout << "Pre-Order: ";
             tree.BinaryTree<std::string>::preOrder(tree.root);
             std::cout << std::endl;
             break;
-        case 'o': // post-order *done*/
-            std::cout << "Post-order: ";
+        case 'o': // post-order *done*
+            std::cout << "Post-Order: ";
             tree.BinaryTree<std::string>::postOrder(tree.root);
             std::cout << std::endl;
             break;
         case 's': // getNumSingleParent *done*
-            tree.BinaryTree<std::string>::getNumSingleParent();
+            std::cout << "Number of Single Parents: ";
+            std:: cout << tree.BinaryTree<std::string>::getNumSingleParent(tree.root);
+            std::cout << std::endl;
             break;
         case 'f': // getNumLeafNodes *done*
-            tree.BinaryTree<std::string>::getNumLeafNodes();
+            std::cout << "Number of leaf nodes: ";
+            std::cout << tree.BinaryTree<std::string>::getNumLeafNodes(tree.root);
+            std::cout << std::endl;
             break;
         case 't': // getSumOfSubtrees *done*
             std::cout << "Item to get sum of subtrees: ";
             std::cin >> key;
-            tree.BinaryTree::getSumOfSubtrees(key);
+            tree.BinaryTree::getSumOfSubtrees(tree.root, key);
             break;
         case 'q': // quit *done*
             std::cout << "Quitting program..." << std::endl;
             return;
         default:
-            std::cout << "Invalid command, try again!" << std::endl;
+            std::cout << "Command not recognized. Try again" << std::endl;
             break;    
         }
     }
