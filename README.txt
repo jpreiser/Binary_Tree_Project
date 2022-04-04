@@ -9,9 +9,10 @@ To run, type './main <input file>' into the command line.
 
 To clean the directory, type 'make clean' into the command line.
 
-Currently this prgram only runs with int-input1.txt, float-input1.txt,
+Currently this prgram runs with int-input1.txt, float-input1.txt,
 and string-input1.txt. To modify the lists, either edit these files
-directly or manipulate them within the program.
+directly, repalce them with a file of the same name, or manipulate them
+within the program.
 
 The pseudo code for singParent is
     if passed node is null
