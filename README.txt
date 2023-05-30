@@ -1,8 +1,3 @@
-Jacob Reiser
-810 687 011
-jpreiser@uga.edu
-Data Structures Assignment 4: BinaryTree
-
 To compile the code, type 'make' into the command line.
 
 To run, type './main <input file>' into the command line.
